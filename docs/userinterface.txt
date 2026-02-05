@@ -1,0 +1,25 @@
+User Interface Documentation
+-----------------------------
+
+Argument Options
+-----------------------------
+- '' : default/no argument
+    lists all files in the current directory with numerical identifiers and names
+    Ex. java topsecret
+    01 filea.txt
+    02 fileb.txt
+    03 filec.txt
+- 'integer' : prints out the decyphered contents of the file with the corresponding identifier
+    Ex. java topsecret 2
+    This is the contents of fileb.txt
+- 'integer' 'string' : print out the decyphered contents of the file with the corresponding identifier using the cipher key provided by the string argument
+    Ex. java topsecret 2 mysecretkey
+    This is the contents of fileb.txt decyphered using mysecretkey
+- 'help' : prints out instructions for use
+    Ex. java topsecret help
+    Argument Options
+    - '' : lists all files in the current directory with numerical identifiers and names
+    - 'integer' : prints out the decyphered contents of the file with the corresponding identifier
+        - 'integer' 'string' : print out the decyphered contents of the file with the corresponding identifier using the cipher key provided by the string argument
+    - 'help' : prints this page
+
