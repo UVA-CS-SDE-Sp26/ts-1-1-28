@@ -1,0 +1,10 @@
+Program Control
+
+this class will have a function, something like handleArgs, that is called by the user interface with valid arguments
+it will call one of two functions from the file handler, either getting the list of files to print or getting the content of a file
+if handleArgs gets the content of a file, it will then call the decipherer on that file
+handleArgs will finally print either the list of files or a deciphered file
+
+Test ideas:
+get list of files when no arguments are present and print the list
+get file contents, deciper them, and print them
