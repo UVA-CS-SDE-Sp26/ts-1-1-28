@@ -31,7 +31,7 @@ public class FileHandler {
         List<String> fileNames = new ArrayList<>();
 
         // Read all .txt files
-        try (DirectoryStream<Path> stream = Files.newDirectoryStream(dataDirectory, "*.txt")) {
+        try (DirectoryStream<Path> stream = Files.newDirectoryStream(dataDirectory, "*.cip")) {
             for (Path entry : stream) {
                 fileNames.add(entry.getFileName().toString());
             }
