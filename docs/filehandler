@@ -1,0 +1,9 @@
+File Handler Documantation.
+---------------------------------------------
+Request for file
+
+---------------------------------------------
+-'string': opens file with name 'string' and then reads all it's content and then sends it to Program control.
+    Ex: 'string' = file1.txt. sendToProgramControl(read(file1.txt))
+-'': Read name of all files and send the names of the files to Program control.
+    Ex: when there is n files. sendToProgramControl("file names:" + " file1.txt" + " file2.txt" + ... + "filen.txt")
