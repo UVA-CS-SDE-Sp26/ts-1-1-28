@@ -1,0 +1,55 @@
+cipher.txt - Member D docs
+===========================
+
+What my part does:
+I handle the deciphering. When program control gives me encrypted text
+I use the key file to turn it back into normal readable text.
+
+The key file (ciphers/key.txt):
+- two lines
+- line 1 is the real characters
+- line 2 is what they got changed to
+- our key:
+    abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890
+    bcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890a
+- basically everything shifts forward by 1
+- includes lowercase uppercase and numbers
+- so like 'b' in the encrypted version is actually 'a'
+
+How my code works:
+- reads the key file, makes a hashmap that goes cipher char -> plain char
+- validates the key (same length lines, no duplicates, file exists, etc)
+- decipher() goes through each character, looks it up in the map,
+  and swaps it. if its not in the map (like a space or period) it
+  just stays the same
+
+Using it:
+  Cipher c = new Cipher();              // uses default key
+  Cipher c = new Cipher("other.txt");   // uses different key
+  c.validateKey();                       // true if its good
+  c.decipher("ifmmp");                  // returns "hello"
+
+If the key is bad it throws an IllegalStateException when you try to decipher
+
+How it fits with everyone else:
+  A gets the command line input
+  C tells B to read the file
+  B gives the encrypted text to C  
+  C gives it to me (D) to decipher
+  I give back the clean text
+  C sends it to A to print
+
+If theres a second command line argument thats an alternate key file
+so C would do new Cipher("thatfile.txt") instead of new Cipher()
+
+My tests (30):
+- key validation: good key, mismatched lengths, duplicate chars (both lines),
+  missing file, empty file, one line, empty lines, extra third line
+- basic decipher: simple word, single char, empty string, null
+- special cases: spaces/punctuation, capitals, all caps, numbers,
+  wraparound (a -> 0), whitespace, just punctuation, full sentence
+- alternate keys: different key, tiny 3 char key
+- errors: bad key throws exception, mismatched key throws exception,
+  no error on good key, has error on bad key
+- getters: path getter, default path, map contents, map is a copy
+- other: map has 62 entries, newlines work, longer text
