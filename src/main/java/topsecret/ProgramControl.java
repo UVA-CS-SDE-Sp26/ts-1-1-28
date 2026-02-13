@@ -23,11 +23,19 @@ public class ProgramControl {
     public String handleArgs(int index) throws IOException {
         List<String> fileList = fileHandler.listFiles();
         String fileName = fileList.get(index - 1);
-        return fileHandler.readFile(fileName);
+        String fileContents = fileHandler.readFile(fileName);
+        Cipher cipher = new Cipher();
+        String fileDeciphered = cipher.decipher(fileContents);
+        return fileDeciphered;
     }
 
     // number and cipher arguments: return file contents with given cipher
-    //public String handleArgs(int index, Object cipher) {
-    //
-    //}
+    public String handleArgs(int index, String keyPath) throws IOException {
+        List<String> fileList = fileHandler.listFiles();
+        String fileName = fileList.get(index - 1);
+        String fileContents = fileHandler.readFile(fileName);
+        Cipher cipher = new Cipher(keyPath); // only difference from one argument is this line
+        String fileDeciphered = cipher.decipher(fileContents);
+        return fileDeciphered;
+    }
 }
