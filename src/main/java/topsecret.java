@@ -1,5 +1,5 @@
-package topsecret;
 
+import topsecret.*;
 import java.io.IOException;
 
 /**
