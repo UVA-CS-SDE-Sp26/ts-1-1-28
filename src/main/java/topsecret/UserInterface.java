@@ -1,10 +1,12 @@
 package topsecret;
 
+import java.io.IOException;
+
 public class UserInterface {
         /**
         * Command Line Utility
         */
-        public static void main(String[] args) {
+        public static void main(String[] args) throws IOException {
             //Check if it's a help command or arg command first
             if (args.length > 0) {
                 String firstArg = args[0];
@@ -33,15 +35,21 @@ public class UserInterface {
                 }
             }
             //Inputs are valid at this point so pass them on
+            ProgramControl programControl = new ProgramControl(new FileHandler());
             if(args.length == 0) {
                 System.out.println("Listing files:");
                 //call program control with no args
+                System.out.println(programControl.handleArgs());
             } else if (args.length == 1) {
                 System.out.println("Displaying file contents:");
                 //call program control with file index arg
+                System.out.println(programControl.handleArgs(Integer.parseInt(args[0])));
+
             } else if (args.length == 2) {
                 System.out.println("Displaying file contents with custom cipher:");
                 //call program control with file index and cipher args
+                System.out.println(programControl.handleArgs(Integer.parseInt(args[0]), args[1]));
+
             }
 
 

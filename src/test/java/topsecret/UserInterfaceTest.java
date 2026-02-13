@@ -4,6 +4,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.PrintStream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -29,7 +30,7 @@ class UserInterfaceTest {
     }
 
     @Test
-    void testZeroArgs() {
+    void testZeroArgs() throws IOException {
         // Call the main method of TopSecret with no arguments
         UserInterface.main(new String[]{});
 
@@ -42,7 +43,7 @@ class UserInterfaceTest {
     }
 
     @Test
-    void testOneArg() {
+    void testOneArg() throws IOException {
         // Call the main method of TopSecret with one argument
         UserInterface.main(new String[]{"1"});
 
@@ -55,7 +56,7 @@ class UserInterfaceTest {
     }
 
      @Test
-    void testTwoArgs() {
+    void testTwoArgs() throws IOException {
         // Call the main method of TopSecret with two arguments
         UserInterface.main(new String[]{"1", "cipher"});
 
@@ -68,7 +69,7 @@ class UserInterfaceTest {
     }
 
     @Test
-    void testHelpArg() {
+    void testHelpArg() throws IOException {
         // Call the main method of TopSecret with help argument
         UserInterface.main(new String[]{"-h"});
 
@@ -81,7 +82,7 @@ class UserInterfaceTest {
     }
 
      @Test
-    void testStringInsteadOfInt() {
+    void testStringInsteadOfInt() throws IOException {
         // Call the main method of TopSecret with a non-integer argument
         UserInterface.main(new String[]{"notANumber"});
 
@@ -94,7 +95,7 @@ class UserInterfaceTest {
     }
 
     @Test
-    void testTooManyArgs() {
+    void testTooManyArgs() throws IOException {
         // Call the main method of TopSecret with too many arguments
         UserInterface.main(new String[]{"1", "cipher", "extraArg"});
 
